@@ -9,4 +9,7 @@ export class HomePage {
 
   constructor() {}
 
+  click() {
+    console.log('click');
+  }
 }
