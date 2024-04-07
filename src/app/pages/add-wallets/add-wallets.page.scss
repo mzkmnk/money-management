@@ -1,0 +1,91 @@
+ion-header{
+    background: transparent;
+    ion-toolbar {
+        --background: transparent;
+        --ion-color-base: transparent !important;
+    }
+    ion-button {
+        --background: transparent;
+        --background-hover: transparent;
+        --background-activated: transparent;
+        --background-focused: transparent;
+        
+        --color: #000;
+        
+        --border-color: transparent;
+        --border-style: none;
+        --box-shadow: none;
+        
+        --ripple-color: transparent;
+        
+        --padding-top: 0;
+        --padding-bottom: 0;
+      }
+    ion-icon{
+        font-size: 1.5rem;
+    }
+    .not-active-icon{
+        opacity: 0.4;
+    }
+}
+
+ion-content::part(scroll) {
+    padding-top: var(--ion-safe-area-top, 0);
+}
+
+ion-content{
+  .custom-header{
+      display: flex;
+      justify-content: space-between;
+      ion-button {
+          --background: transparent;
+          --background-hover: transparent;
+          --background-activated: transparent;
+          --background-focused: transparent;
+          
+          --color: #000;
+          
+          --border-color: transparent;
+          --border-style: none;
+          --box-shadow: none;
+          
+          --ripple-color: transparent;
+          
+          --padding-top: 0;
+          --padding-bottom: 0;
+        }
+      ion-icon{
+          font-size: 1.5rem;
+      }
+      .not-active-icon{
+          opacity: 0.4;
+      }
+  }
+  .custom-card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    ion-card {
+      border-radius: 40px;
+      flex: 0 0 auto;
+      height: 200px;
+      width: 80%;
+      margin-right: 20px;
+      margin-left: 20px;
+      ion-icon{
+        font-size: 1.3rem;
+        margin-right: 1px;
+      }
+      .walletName{
+        font-size: 1rem;
+      }
+      .money{
+        font-size: 1.7rem;
+        font-weight: bold;
+      }
+      .walletDerection{
+        font-size: 1rem;
+      }
+    }
+  }
+}

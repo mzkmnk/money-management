@@ -1,0 +1,36 @@
+
+ion-content::part(scroll) {
+    padding-top: var(--ion-safe-area-top, 0);
+}
+
+ion-content{
+    .card-wrapper{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    ion-card{
+        width: 100%;
+        border-radius: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding-bottom: 20px;
+        ion-card-content{
+            width: 100%;
+            .spacer{
+                margin-top: 20px;
+            }
+            ion-input{
+                --padding-start:2vh;
+                border: 2px solid #808080;
+                border-radius: 20px;
+            }
+        }
+        ion-button{
+            width: 90%;
+            --border-radius: 20px 10px 20px 20px;
+        }
+    }
+}

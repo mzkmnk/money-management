@@ -1,0 +1,49 @@
+<ion-content>
+  <div class="custom-header">
+    <ion-item lines="none">
+      <ion-button (click)="back()" slot="start">
+        <ion-icon name="caret-back-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+    <ion-item lines="none" slot="end">
+      <ion-button [disabled]="!isNextOk()" (click)="addWallet()">
+        <ion-icon
+          slot="icon-only"
+          icon="caret-forward-outline"
+          [ngClass]="{'not-active-icon':!isNextOk()}"
+        ></ion-icon>
+      </ion-button>
+    </ion-item>
+  </div>
+  <div class="custom-card">
+    <ion-card>
+      <form>
+        <ion-card-content>
+          <ion-list>
+            <ion-item lines="none" class="walletName">
+              <ion-input
+                placeholder="Wallet Name"
+                [(ngModel)]="walletName"
+                (ionChange)="setWalletName($event)"
+              ></ion-input>
+            </ion-item>
+            <ion-item lines="none" class="money">
+              <ion-icon src="../../../assets/icon/yen.svg"> </ion-icon>
+              <ion-input
+                placeholder="0"
+                (ionChange)="setMoney($event)"
+              ></ion-input>
+            </ion-item>
+            <ion-item lines="none" class="walletDescription">
+              <ion-input
+                placeholder="Wallet Description"
+                [(ngModel)]="walletDescription"
+                (ionChange)="setWalletDescription($event)"
+              ></ion-input>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </form>
+    </ion-card>
+  </div>
+</ion-content>
