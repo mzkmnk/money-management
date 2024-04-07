@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./groups.page.scss'],
 })
 export class GroupsPage implements OnInit {
-
+  type="group";
   constructor() { }
 
   ngOnInit() {

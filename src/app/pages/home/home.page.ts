@@ -4,6 +4,7 @@ import { LoadingController } from '@ionic/angular';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { ErrorService } from 'src/app/services/error/error.service';
+import { DataService } from 'src/app/services/data/data.service';
 
 @Component({
   selector: 'app-home',
@@ -12,6 +13,7 @@ import { ErrorService } from 'src/app/services/error/error.service';
 })
 export class HomePage {
   wallets: any = [];
+  type = 'home';
   userIconURL: string = 'https://ionicframework.com/docs/img/demos/avatar.svg';
   username: string = 'User';
   constructor(
@@ -19,7 +21,8 @@ export class HomePage {
     private loadingController: LoadingController,
     private errorService: ErrorService,
     private auth: AngularFireAuth,
-    private firestore: AngularFirestore
+    private firestore: AngularFirestore,
+    private dataService: DataService
   ) {
     this.getWallets();
   }
@@ -72,5 +75,13 @@ export class HomePage {
 
   addWallet() {
     this.router.navigate(['/add-wallets']);
+  }
+
+  detailCard(wallet: any) {
+    this.dataService.setWalletId(wallet.walletId);
+    this.dataService.setWalletName(wallet.walletName);
+    this.dataService.setMoney(wallet.money);
+    this.dataService.setWalletDescription(wallet.walletDescription);
+    this.router.navigate(['/detail-card']);
   }
 }

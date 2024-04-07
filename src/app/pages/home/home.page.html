@@ -1,21 +1,12 @@
 <ion-content>
-  <div class="custom-header">
-    <ion-list>
-      <ion-item lines="none">
-        <ion-chip>
-          <ion-avatar>
-            <img [src]="userIconURL" />
-          </ion-avatar>
-          <ion-label>{{username}}</ion-label>
-        </ion-chip>
-        <ion-button (click)="addWallet()" slot="end">
-          <ion-icon slot="icon-only" icon="add"></ion-icon>
-        </ion-button>
-      </ion-item>
-    </ion-list>
-  </div>
+  <app-header
+    [type]="type"
+    [username]="username"
+    [userIconURL]="userIconURL"
+    [addFunc]="addWallet"
+  ></app-header>
   <div class="card-container">
-    <ion-card *ngFor="let wallet of wallets">
+    <ion-card *ngFor="let wallet of wallets" (click)="detailCard(wallet)">
       <ion-card-content>
         <ion-list>
           <ion-item lines="none" class="walletName"
