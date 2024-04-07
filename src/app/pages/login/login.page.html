@@ -1,0 +1,34 @@
+<ion-content>
+  <div>
+    <form class="card-wrapper" (ngSubmit)="login()">
+      <ion-card>
+        <img src="../../../assets/img/login.jpg" alt="login" />
+        <ion-card-header>
+          <ion-card-title>LOGIN</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-input
+            [(ngModel)]="email"
+            (ionChange)="onSetEmail($event)"
+            fill="outline"
+            placeholder="email"
+            email
+          ></ion-input>
+          <div class="spacer"></div>
+          <ion-input
+            [(ngModel)]="password"
+            (ionChange)="onSetPassword($event)"
+            fill="outline"
+            placeholder="password"
+            password
+          >
+          </ion-input>
+        </ion-card-content>
+        <div class="spacer"></div>
+        <ion-button [disabled]="isTappedButton()" id="open-toast" type="submit"
+          >LOGIN</ion-button
+        >
+      </ion-card>
+    </form>
+  </div>
+</ion-content>

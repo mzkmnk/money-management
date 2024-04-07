@@ -1,0 +1,12 @@
+.custom-header{
+  ion-button{
+    --border-radius:50%;
+    --background:black;
+    --background-activated:black;
+    width: 35px;
+    height: 35px;
+  }
+  ion-button::part(native) {
+    overflow: hidden;
+  }
+}
