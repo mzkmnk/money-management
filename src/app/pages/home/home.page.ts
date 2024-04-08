@@ -16,6 +16,8 @@ export class HomePage {
   type = 'home';
   userIconURL: string = 'https://ionicframework.com/docs/img/demos/avatar.svg';
   username: string = 'User';
+  totalMoney: number = 0;
+  usedMoney: number = 0;
   constructor(
     private router: Router,
     private loadingController: LoadingController,
@@ -62,8 +64,10 @@ export class HomePage {
                 walletDescription: walletData['walletDescription'],
                 money: walletData['money'],
               });
+              this.totalMoney += Number(walletData['money']);
             }
           }
+          this.dataService.setWallets(this.wallets);
         }
       }
     } catch (error) {

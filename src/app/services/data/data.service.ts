@@ -10,6 +10,7 @@ export class DataService {
   private _walletName = '';
   private _money = '';
   private _walletDescription = '';
+  private _wallets: any[] = [];
   constructor(private firestore: AngularFirestore) {}
 
   setWalletId(walletId: string) {
@@ -35,5 +36,11 @@ export class DataService {
   }
   getWalletDescription() {
     return this._walletDescription;
+  }
+  setWallets(wallets: any[]) {
+    this._wallets = wallets;
+  }
+  getWallets() {
+    return this._wallets;
   }
 }

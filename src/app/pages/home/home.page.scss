@@ -5,6 +5,46 @@ ion-content::part(scroll) {
 ion-content{
   margin-right: 10px;
   margin-left: 10px;
+  .custom-card{
+    ion-card{
+      border-radius: 10px;
+      background-color: #87EFAC;
+      display: flex;
+      align-items: center;
+      height: 90px;
+      ion-row{
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+      }
+      ion-col {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        position: relative;
+        ion-label,ion-text{
+          color: #1A715D;
+        }
+        ion-text{
+          font-size: 1.2rem;
+          font-weight: bold;
+        }
+      }
+      ion-col::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 2px;
+        background-color: #EFFDF4;
+      }
+      ion-col:last-child::after {
+        display: none;
+      }
+    }
+  }
   .custom-header{
     ion-button{
       --border-radius:50%;
@@ -22,25 +62,28 @@ ion-content{
     flex-wrap: nowrap;
     overflow-x: auto;
     padding-right: 20px;
+    ion-card,ion-list,ion-item{
+      --background:#6B8FF6; 
+    }
     ion-card {
       border-radius: 40px;
       flex: 0 0 auto;
       width: 85%;
       height: 200px;
       margin-right: 10px;
-      ion-icon{
-        font-size: 1.3rem;
-        margin-right: 1px;
-      }
-      .walletName{
-        font-size: 1rem;
-      }
-      .money{
-        font-size: 1.7rem;
-        font-weight: bold;
-      }
-      .walletDerection{
-        font-size: 1rem;
+      ion-card-content{
+        ion-list{
+          ion-item{
+            color: #DEE2FD;
+          }
+          .walletName .walletDerection{
+            font-size: 1.1rem;
+          }
+          .money{
+            font-size: 1.7rem;
+            font-weight: bold;
+          }
+        }
       }
     }
   }

@@ -1,0 +1,10 @@
+ion-content::part(scroll) {
+    padding-top: var(--ion-safe-area-top, 0);
+}
+
+ion-content{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

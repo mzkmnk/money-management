@@ -33,6 +33,10 @@ const routes: Routes = [
     path: 'detail-card',
     loadChildren: () => import('./pages/detail-card/detail-card.module').then( m => m.DetailCardPageModule)
   },
+  {
+    path: 'record-expense',
+    loadChildren: () => import('./pages/record-expense/record-expense.module').then( m => m.RecordExpensePageModule)
+  },
 ];
 
 @NgModule({
