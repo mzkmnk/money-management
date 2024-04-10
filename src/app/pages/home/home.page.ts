@@ -58,11 +58,19 @@ export class HomePage {
               .toPromise();
             if (walletDoc) {
               const walletData: any = walletDoc.data();
+              let walletImgPath = '';
+              if (walletData['walletType'] === 'wallet') {
+                walletImgPath = '../../../assets/img/wallet.png';
+              } else if (walletData['walletType'] === 'bank') {
+                walletImgPath = '../../../assets/img/bank.png';
+              }
               this.wallets.push({
                 walletId: walletId,
                 walletName: walletData['walletName'],
                 walletDescription: walletData['walletDescription'],
                 money: walletData['money'],
+                walletType: walletData['walletType'],
+                walletImgPath: walletImgPath,
               });
               this.totalMoney += Number(walletData['money']);
             }
@@ -87,5 +95,9 @@ export class HomePage {
     this.dataService.setMoney(wallet.money);
     this.dataService.setWalletDescription(wallet.walletDescription);
     this.router.navigate(['/detail-card']);
+  }
+
+  clickToRecordExpense() {
+    this.router.navigate(['/record-expense']);
   }
 }
