@@ -28,3 +28,12 @@
 :root{
     --ion-background-color:#F7F9FF;
 }
+
+ion-tabs {
+    background: #F7F9FF;
+}
+  
+  /* アクティブなタブの背景色を変更 */
+ion-tabs ion-tab-bar {
+    --background: #F7F9FF;
+}

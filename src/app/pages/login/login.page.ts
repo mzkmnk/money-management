@@ -41,23 +41,30 @@ export class LoginPage implements OnInit {
     try {
       this.auth.authState.subscribe((user) => {
         if (user) {
-          this.router.navigate(['/tabs']);
+          this.router.navigate(['/tabs']).then(() => {
+            loading.dismiss();
+          });
+        } else {
+          loading.dismiss();
         }
       });
     } catch (error) {
       this.errorService.logError(error);
-    } finally {
-      loading.dismiss();
+      await loading.dismiss();
     }
   }
 
   async login() {
+    const loading = await this.loadingController.create({
+      message: 'Loading...',
+      spinner: 'crescent',
+    });
+    await loading.present();
     try {
       const user = await this.auth.signInWithEmailAndPassword(
         this.email,
         this.password
       );
-      console.log(user);
       const toast = await this.toastController.create({
         message: 'お帰りなさい!',
         duration: 2000,
@@ -67,6 +74,8 @@ export class LoginPage implements OnInit {
       this.router.navigate(['/tabs']);
     } catch (error) {
       this.errorService.logError(error, 'ログインに失敗しました。');
+    } finally {
+      await loading.dismiss();
     }
   }
 

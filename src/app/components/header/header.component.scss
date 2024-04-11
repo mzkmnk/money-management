@@ -1,12 +1,23 @@
 .custom-header{
-  ion-button{
-    --border-radius:50%;
-    --background:black;
-    --background-activated:black;
-    width: 35px;
-    height: 35px;
+  margin-right: 20px;
+  margin-left: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .user-info{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #394C63;
+    font-weight: bold;
+    ion-avatar{
+      width: 60px;
+      height: 60px;
+      margin-right: 15px;
+    }
+    font-size: 1.5rem;
   }
-  ion-button::part(native) {
-    overflow: hidden;
+  ion-icon{
+    font-size: 1.5rem;
   }
 }
