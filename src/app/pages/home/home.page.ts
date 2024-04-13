@@ -65,17 +65,21 @@ export class HomePage {
               } else if (walletData['walletType'] === 'bank') {
                 walletImgPath = '../../../assets/img/bank.png';
               }
+              let recordsData: any = [];
+              if ('records' in walletData) {
+                recordsData = walletData['records'];
+              }
               this.wallets.push({
                 walletId: walletId,
                 walletName: walletData['walletName'],
                 walletDescription: walletData['walletDescription'],
                 money: walletData['money'],
-                records: walletData['records'],
+                records: recordsData,
                 walletType: walletData['walletType'],
                 walletImgPath: walletImgPath,
               });
               this.totalMoney += Number(walletData['money']);
-              for (const record of walletData['records']) {
+              for (const record of recordsData) {
                 let backgroundStyle = '';
                 let iconStyle = '';
                 if (record['type'] === 'document') {
@@ -91,6 +95,9 @@ export class HomePage {
               }
             }
           }
+          this.records.sort((a: any, b: any) => {
+            return b.date.toDate().getTime() - a.date.toDate().getTime();
+          });
           this.dataService.setWallets(this.wallets);
         }
       }

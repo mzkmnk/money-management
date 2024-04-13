@@ -128,7 +128,7 @@ ion-content{
       ion-card{
         display: flex;
         align-items: center;
-        justify-content: flex-start;
+        justify-content: space-between;
         border-radius: 20px;
         height: 80px;
         .custom-content{
@@ -146,16 +146,14 @@ ion-content{
               font-size: 1.2rem;
             }
           }
-          .item{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: row;
-            ion-label{
-              font-size: 1.1rem;
-              font-weight: 500;
-            }
-          }
+        }
+
+        ion-label{
+          font-size: 1.1rem;
+          font-weight: 500;
+        }
+        .record-money{
+          margin-right: 20px;
         }
       }
     }

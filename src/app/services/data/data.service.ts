@@ -63,7 +63,7 @@ export class DataService {
       date: timestampDate,
       usedMoney: Number(money),
       purpose: purpose,
-      type,
+      type:type,
     };
     try {
       const walletRef = this.firestore

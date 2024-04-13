@@ -9,6 +9,7 @@ import { DetailCardPageRoutingModule } from './detail-card-routing.module';
 import { DetailCardPage } from './detail-card.page';
 import { AppCommonModule } from 'src/app/modules/app-common/app-common.module';
 
+
 @NgModule({
   imports: [
     CommonModule,

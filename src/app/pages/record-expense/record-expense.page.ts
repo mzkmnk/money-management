@@ -114,7 +114,7 @@ export class RecordExpensePage implements OnInit {
         this.money,
         this.date,
         this.purpose,
-        'pay'
+        'document'
       );
       await toast.present();
       this.router.navigate(['/home']).then(() => {
