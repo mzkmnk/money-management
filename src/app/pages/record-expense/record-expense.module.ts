@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { RecordExpensePageRoutingModule } from './record-expense-routing.module';
 
 import { RecordExpensePage } from './record-expense.page';
+import { AppCommonModule } from 'src/app/modules/app-common/app-common.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RecordExpensePageRoutingModule
+    RecordExpensePageRoutingModule,
+    AppCommonModule,
   ],
   declarations: [RecordExpensePage]
 })

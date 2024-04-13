@@ -1,0 +1,19 @@
+.custom-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    ion-buttons{
+        position: absolute;
+        left: 20px;
+    }
+    ion-back-button{
+        color: #424E60;
+    }
+    ion-text{
+        color: #424E60;
+        font-size: 1.25rem;
+        font-weight: bold;
+    }
+}

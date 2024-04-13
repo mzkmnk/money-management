@@ -18,6 +18,7 @@ export class HomePage {
   username: string = 'User';
   totalMoney: number = 0;
   usedMoney: number = 0;
+  records: any = [];
   constructor(
     private router: Router,
     private loadingController: LoadingController,
@@ -69,10 +70,25 @@ export class HomePage {
                 walletName: walletData['walletName'],
                 walletDescription: walletData['walletDescription'],
                 money: walletData['money'],
+                records: walletData['records'],
                 walletType: walletData['walletType'],
                 walletImgPath: walletImgPath,
               });
               this.totalMoney += Number(walletData['money']);
+              for (const record of walletData['records']) {
+                let backgroundStyle = '';
+                let iconStyle = '';
+                if (record['type'] === 'document') {
+                  backgroundStyle = '#eee2fc';
+                  iconStyle = '#D9A8EF';
+                } else if (record['type'] === 'shuffle') {
+                  backgroundStyle = '#FEEAD5';
+                  iconStyle = '#EC9E57';
+                }
+                record['backgroundStyle'] = backgroundStyle;
+                record['iconStyle'] = iconStyle;
+                this.records.push(record);
+              }
             }
           }
           this.dataService.setWallets(this.wallets);
@@ -85,10 +101,6 @@ export class HomePage {
     }
   }
 
-  addWallet() {
-    this.router.navigate(['/add-wallets']);
-  }
-
   detailCard(wallet: any) {
     this.dataService.setWalletId(wallet.walletId);
     this.dataService.setWalletName(wallet.walletName);
@@ -97,7 +109,11 @@ export class HomePage {
     this.router.navigate(['/detail-card']);
   }
 
-  clickToRecordExpense() {
+  clickToAddWallet() {
+    this.router.navigate(['/add-wallets']);
+  }
+
+  clickToPay() {
     this.router.navigate(['/record-expense']);
   }
 }

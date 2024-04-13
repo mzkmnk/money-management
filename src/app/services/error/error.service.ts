@@ -15,10 +15,11 @@ export class ErrorService {
     const newDate = new Date();
     const timestamp = newDate.getTime();
     const docId = timestamp.toString();
+    const date = new Date();
     await this.firestore
       .collection('errors')
       .doc(docId)
-      .set({ ...error, timestamp });
+      .set({ ...error, date });
     if (message !== '') {
       const toast = await this.toastController.create({
         message: message,

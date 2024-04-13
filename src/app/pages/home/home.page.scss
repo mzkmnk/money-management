@@ -45,18 +45,6 @@ ion-content{
       }
     }
   }
-  .custom-header{
-    ion-button{
-      --border-radius:50%;
-      --background:black;
-      --background-activated:black;
-      width: 35px;
-      height: 35px;
-    }
-    ion-button::part(native) {
-      overflow: hidden;
-    }
-  }
   .card-container {
     display: flex;
     flex-wrap: nowrap;
@@ -73,7 +61,7 @@ ion-content{
       height: 230px;
       ion-card-content{
         .item{
-          margin-top: 20px;
+          margin-top: 10px;
           margin-left: 20px;
           color: #394C63;
           .walletName{
@@ -90,15 +78,85 @@ ion-content{
     }
   }
   .card-button{
-    ion-button{
-      // --background:radial-gradient(circle at 0% 0%, rgba(35, 114, 247, 0.87) 10%, rgba(35, 102, 247, 0.58) 85%);
-      --background:#FFFFFF;
-      --border-radius: 40px;
-      height: 45px;
-      color: #394C63;
+    ion-col{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      ion-button{
+        --border-radius: 10px;
+      }
+      ion-label{
+        color: #708597;
+        margin-top: 8px;
+        font-size: 0.9rem;
+      }
+      .wallet{
+        --background:#E1F5EA;
+        ion-icon{
+          color:#75CC9B;
+        }
+      }
+      .shuffle{
+        --background:#FEEAD5;
+        ion-icon{
+          color:#EC9E57;
+        }
+      }
+      .document{
+        --background:#eee2fc;
+        ion-icon{
+          color:#D9A8EF;
+        }
+      }
+      .analytics{
+        --background:#E1F5FE;
+        ion-icon{
+          color: #6AC4E4;
+        }
+      }
+    }
+  }
+  .records{
+    margin-top: 20px;
+    ion-text{
+      color: #708597;
       font-weight: bold;
-      ion-icon{
-        margin-right: 7px;
+      font-size: 1.5rem;
+    }
+    .records-card{
+      ion-card{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        border-radius: 20px;
+        height: 80px;
+        .custom-content{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: row;
+          margin-right: 20px;
+          margin-left: 20px;
+          .custom-icon{
+            padding: 15px;
+            border-radius: 10px;
+            margin-right: 20px;
+            ion-icon{
+              font-size: 1.2rem;
+            }
+          }
+          .item{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+            ion-label{
+              font-size: 1.1rem;
+              font-weight: 500;
+            }
+          }
+        }
       }
     }
   }

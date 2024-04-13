@@ -1,24 +1,6 @@
 <ion-content>
-  <ion-card>
-    <ion-card-content>
-      <ion-list>
-        <ion-item lines="none" class="walletName">{{ walletName }}</ion-item>
-        <ion-item lines="none" class="money">
-          <ion-icon src="../../../assets/icon/yen.svg"> </ion-icon>
-          <ion-label>{{ money }}</ion-label>
-        </ion-item>
-        <ion-item lines="none" class="walletDescription">
-          {{ walletDescription }}
-        </ion-item>
-      </ion-list>
-    </ion-card-content>
-  </ion-card>
-  <ion-segment value="history">
-    <ion-segment-button value="history">
-      <ion-label>History</ion-label>
-    </ion-segment-button>
-    <ion-segment-button value="chart">
-      <ion-label>Chart</ion-label>
-    </ion-segment-button>
-  </ion-segment>
+  <app-back-on-header [title]="'DashBoard'"></app-back-on-header>
+  <div class="analysis-circle">
+    <ion-card></ion-card>
+  </div>
 </ion-content>

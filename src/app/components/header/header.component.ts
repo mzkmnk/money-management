@@ -11,12 +11,8 @@ export class HeaderComponent implements OnInit {
     'https://ionicframework.com/docs/img/demos/avatar.svg';
   @Input() username: string = 'User';
   @Input() type:String='home';
-  @Input() addFunc: Function = () => {};
   constructor(private router: Router) {}
 
   ngOnInit() {}
-
-  onClick() {
-    this.addFunc();
-  }
+  
 }
