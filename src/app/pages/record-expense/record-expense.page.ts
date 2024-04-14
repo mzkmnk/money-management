@@ -17,6 +17,7 @@ export class RecordExpensePage implements OnInit {
   wallets: any[] = [];
   selectedWallet: any = {};
   purpose: string = '';
+  
   options: any = {
     timeZone: 'Asia/Tokyo',
     year: 'numeric',
@@ -28,7 +29,8 @@ export class RecordExpensePage implements OnInit {
     hourCycle: 'h24',
   };
   formatter = new Intl.DateTimeFormat('ja-JP', this.options);
-  date: string = this.formatter.format(new Date());
+  dateNotT: string = this.formatter.format(new Date()).replace(/\//g,'-');
+  date:string = this.dateNotT.slice(0,10)+'T'+this.dateNotT.slice(11,19);
   money: string = '0';
   constructor(
     private router: Router,

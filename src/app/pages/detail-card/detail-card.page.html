@@ -1,6 +1,21 @@
 <ion-content>
   <app-back-on-header [title]="'DashBoard'"></app-back-on-header>
-  <div class="analysis-circle">
-    <ion-card></ion-card>
+  <div class="analysis-line">
+    <ion-card>
+      <ngx-charts-line-chart
+        [view]="view"
+        [scheme]="colorScheme"
+        [legend]="showLegend"
+        [gradient]="gradient"
+        [showXAxisLabel]="showXAxisLabel"
+        [showYAxisLabel]="showYAxisLabel"
+        [xAxis]="showXAxis"
+        [yAxis]="showYAxis"
+        [timeline]="timeline"
+        [results]="records"
+        [curve]="curve"
+      >
+      </ngx-charts-line-chart>
+    </ion-card>
   </div>
 </ion-content>

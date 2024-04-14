@@ -113,6 +113,7 @@ export class HomePage {
     this.dataService.setWalletName(wallet.walletName);
     this.dataService.setMoney(wallet.money);
     this.dataService.setWalletDescription(wallet.walletDescription);
+    this.dataService.setRecords(wallet.records);
     this.router.navigate(['/detail-card']);
   }
 

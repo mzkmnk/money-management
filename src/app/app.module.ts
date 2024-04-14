@@ -18,6 +18,8 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 // import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 // import { provideStorage, getStorage } from '@angular/fire/storage';
 
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -31,6 +33,7 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
     // provideAuth(() => getAuth()),
     // provideFirestore(() => getFirestore()),
     // provideStorage(() => getStorage()),
+    NgxChartsModule,
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
