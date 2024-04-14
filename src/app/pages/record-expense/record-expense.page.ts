@@ -16,7 +16,9 @@ import { ErrorService } from 'src/app/services/error/error.service';
 export class RecordExpensePage implements OnInit {
   wallets: any[] = [];
   selectedWallet: any = {};
-  purpose: string = '';
+  purpose: string = '選択してください';
+  isSelectedPurpose: boolean = false;
+  memo : string = '';
   options: any = {
     timeZone: 'Asia/Tokyo',
     year: 'numeric',
@@ -28,7 +30,8 @@ export class RecordExpensePage implements OnInit {
     hourCycle: 'h24',
   };
   formatter = new Intl.DateTimeFormat('ja-JP', this.options);
-  date: string = this.formatter.format(new Date());
+  dateNotT: string = this.formatter.format(new Date()).replace(/\//g,'-');
+  date:string = this.dateNotT.slice(0,10)+'T'+this.dateNotT.slice(11,19);
   money: string = '0';
   constructor(
     private router: Router,
@@ -56,6 +59,12 @@ export class RecordExpensePage implements OnInit {
 
   selectedTapWallet(wallet: any) {
     this.selectedWallet = wallet;
+    this.modalController.dismiss();
+  }
+
+  selectedUsedPurpose(purpose: string) {
+    this.purpose = purpose;
+    this.isSelectedPurpose = true;
     this.modalController.dismiss();
   }
 
@@ -90,7 +99,7 @@ export class RecordExpensePage implements OnInit {
   }
 
   isTapButtonDisabled() {
-    if (this.purpose === '' || this.money === '0') {
+    if (this.money === '0' || this.isSelectedPurpose === false) {
       return true;
     } else {
       return false;

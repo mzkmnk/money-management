@@ -48,28 +48,5 @@
       </ion-row>
     </ion-grid>
   </div>
-  <div class="records">
-    <ion-text>History</ion-text>
-    <div class="records-card">
-      <ion-card *ngFor="let record of records">
-        <div class="custom-content">
-          <div
-            class="custom-icon"
-            [style.background-color]="record.backgroundStyle"
-          >
-            <ion-icon
-              [name]="record.type"
-              [style.color]="record.iconStyle"
-            ></ion-icon>
-          </div>
-          <div class="record-purpose">
-            <ion-label>{{record.purpose}}</ion-label>
-          </div>
-        </div>
-        <div class="record-money">
-          <ion-label>¥{{ record.usedMoney }}</ion-label>
-        </div>
-      </ion-card>
-    </div>
-  </div>
+  <app-history-list [records]="records"></app-history-list>
 </ion-content>

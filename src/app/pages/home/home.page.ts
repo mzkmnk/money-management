@@ -91,6 +91,7 @@ export class HomePage {
                 }
                 record['backgroundStyle'] = backgroundStyle;
                 record['iconStyle'] = iconStyle;
+                record['walletId'] = walletId;
                 this.records.push(record);
               }
             }
@@ -113,6 +114,13 @@ export class HomePage {
     this.dataService.setWalletName(wallet.walletName);
     this.dataService.setMoney(wallet.money);
     this.dataService.setWalletDescription(wallet.walletDescription);
+    let data = [];
+    for(let record of wallet.records) {
+      if(record.walletId === wallet.walletId) {
+        data.push(record);
+      }
+    }
+    this.dataService.setRecords(data);
     this.router.navigate(['/detail-card']);
   }
 

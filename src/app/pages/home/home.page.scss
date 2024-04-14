@@ -61,8 +61,8 @@ ion-content{
       height: 230px;
       ion-card-content{
         .item{
-          margin-top: 10px;
-          margin-left: 20px;
+          margin-top: 20px;
+          margin-left: 40px;
           color: #394C63;
           .walletName{
             font-size: 1.3rem;
@@ -113,47 +113,6 @@ ion-content{
         --background:#E1F5FE;
         ion-icon{
           color: #6AC4E4;
-        }
-      }
-    }
-  }
-  .records{
-    margin-top: 20px;
-    ion-text{
-      color: #708597;
-      font-weight: bold;
-      font-size: 1.5rem;
-    }
-    .records-card{
-      ion-card{
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        border-radius: 20px;
-        height: 80px;
-        .custom-content{
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          flex-direction: row;
-          margin-right: 20px;
-          margin-left: 20px;
-          .custom-icon{
-            padding: 15px;
-            border-radius: 10px;
-            margin-right: 20px;
-            ion-icon{
-              font-size: 1.2rem;
-            }
-          }
-        }
-
-        ion-label{
-          font-size: 1.1rem;
-          font-weight: 500;
-        }
-        .record-money{
-          margin-right: 20px;
         }
       }
     }

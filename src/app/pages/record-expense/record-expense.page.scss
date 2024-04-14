@@ -38,11 +38,21 @@ ion-content{
         flex-direction: row;
     }
     .purpose{
-        margin-left: 120px;//ここあまり良くない
-        ion-input{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        ion-label{
             color: #416291;
             font-family: 'Poppins', sans-serif;
-            font-size: 1.7rem;
+            font-size: 1.5rem;
+        }
+        .modal-purpose{
+            ion-item{
+                ion-label{
+                    font-family: 'Poppins', sans-serif;
+                    color: #416291;
+                }
+            }
         }
     }
     .display-number{
@@ -93,6 +103,40 @@ ion-content{
             font-weight: bold;
             --background:linear-gradient(150deg, rgba(35, 114, 247, 0.87) 10%, rgba(35, 102, 247, 0.51) 90%);
             color: white;
+        }
+    }
+}
+
+.modal-wallet{
+    ion-list{
+        margin-top: 10px;
+        ion-item{
+            ion-label{
+                font-family: 'Poppins', sans-serif;
+                color: #416291;
+                font-size: 1.0rem;
+                font-weight: 600;
+            }
+            margin-bottom: 10px;
+        }
+    }
+}
+.modal-purpose{
+    ion-list{
+        margin-top: 10px;
+        ion-item{
+            ion-avatar{
+                margin-right: 20px;
+                width: 40px;
+                height: 40px;
+            }
+            ion-label{
+                font-family: 'Poppins', sans-serif;
+                color: #416291;
+                font-size: 1.0rem;
+                font-weight: 600;
+            }
+            margin-bottom: 10px;
         }
     }
 }

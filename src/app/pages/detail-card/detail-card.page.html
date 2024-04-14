@@ -1,6 +1,28 @@
 <ion-content>
   <app-back-on-header [title]="'DashBoard'"></app-back-on-header>
-  <div class="analysis-circle">
-    <ion-card></ion-card>
+  <div class="analysis-line">
+    <ion-card>
+      <ion-card-title>Analysis</ion-card-title>
+      <ngx-charts-pie-chart
+        [view]="view"
+        [scheme]="colorScheme"
+        [results]="data"
+        [gradient]="gradient"
+        [legend]="showLegend"
+        [labels]="showLabels"
+        [percentageFormatting]="percentageFormatting"
+      ></ngx-charts-pie-chart>
+      <div class="displayWallet">
+        <div class="usedMoney">
+          <ion-label>used</ion-label>
+          <ion-text>¥{{ usedMoney }}</ion-text>
+        </div>
+        <div class="availableMoney">
+          <ion-label>available</ion-label>
+          <ion-text>¥{{ money }}</ion-text>
+        </div>
+      </div>
+    </ion-card>
   </div>
+  <app-history-list [records]="records"></app-history-list>
 </ion-content>

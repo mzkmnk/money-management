@@ -12,6 +12,7 @@ export class DataService {
   private _money = '';
   private _walletDescription = '';
   private _wallets: any[] = [];
+  private _records: any[] = [];
   constructor(
     private firestore: AngularFirestore,
     private errorService: ErrorService
@@ -47,6 +48,12 @@ export class DataService {
   getWallets() {
     return this._wallets;
   }
+  setRecords(records: any[]) {
+    this._records = records;
+  }
+  getRecords() {
+    return this._records;
+  }
 
   //使ったお金を記録する
   async recordExpense(
@@ -54,7 +61,7 @@ export class DataService {
     money: string,
     date: string,
     purpose: string,
-    type:string,
+    type: string
   ) {
     const timestampDate = new Date(date);
     const data = {
@@ -63,7 +70,7 @@ export class DataService {
       date: timestampDate,
       usedMoney: Number(money),
       purpose: purpose,
-      type:type,
+      type: type,
     };
     try {
       const walletRef = this.firestore
@@ -75,10 +82,10 @@ export class DataService {
         if (walletData) {
           let records = walletData.records || [];
           records.push(data);
-          await walletRef.update({
+          await walletRef.set({
             records: records,
             money: wallet.money,
-          });
+          },{merge:true});
         } else {
           this.errorService.logError('Wallet data not found');
         }
