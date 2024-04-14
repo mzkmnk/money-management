@@ -16,8 +16,9 @@ import { ErrorService } from 'src/app/services/error/error.service';
 export class RecordExpensePage implements OnInit {
   wallets: any[] = [];
   selectedWallet: any = {};
-  purpose: string = '';
-  
+  purpose: string = '選択してください';
+  isSelectedPurpose: boolean = false;
+  memo : string = '';
   options: any = {
     timeZone: 'Asia/Tokyo',
     year: 'numeric',
@@ -61,6 +62,12 @@ export class RecordExpensePage implements OnInit {
     this.modalController.dismiss();
   }
 
+  selectedUsedPurpose(purpose: string) {
+    this.purpose = purpose;
+    this.isSelectedPurpose = true;
+    this.modalController.dismiss();
+  }
+
   numberButtonClick(number: string) {
     if (number === 'backspace') {
       if (this.money === '0') {
@@ -92,7 +99,7 @@ export class RecordExpensePage implements OnInit {
   }
 
   isTapButtonDisabled() {
-    if (this.purpose === '' || this.money === '0') {
+    if (this.money === '0' || this.isSelectedPurpose === false) {
       return true;
     } else {
       return false;

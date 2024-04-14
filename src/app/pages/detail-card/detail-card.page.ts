@@ -11,8 +11,10 @@ export class DetailCardPage implements OnInit {
   walletId: string = '';
   walletName: string = '';
   money: string = '';
+  usedMoney : number = 0; 
   walletDescription: string = '';
   records: any = [];
+  data : any = [];
   constructor(private dataService: DataService) {
     this.walletId = this.dataService.getWalletId();
     this.walletName = this.dataService.getWalletName();
@@ -21,24 +23,25 @@ export class DetailCardPage implements OnInit {
     this.records = this.dataService.getRecords();
     let data: any = {};
     for (let record of this.records) {
-      const date: string = record.date.toDate().toISOString();
-      const dateKey: string = date.split('T')[0];
-      if (data[dateKey]) {
-        data[dateKey] += record.usedMoney;
+      this.usedMoney += record.usedMoney;
+      if (data[record.purpose]) {
+        data[record.purpose] += record.usedMoney;
       } else {
-        data[dateKey] = record.usedMoney;
+        data[record.purpose] = record.usedMoney;
       }
     }
-    let dataNor = [];
-    for (let key in data) {
-      dataNor.push({ name: key, value: data[key] });
-    }
-    this.records = [
-      {
-        name: 'records',
-        series: dataNor,
-      },
-    ];
+    this.data = Object.keys(data).map((key) => {
+      return {
+        name: key,
+        value: data[key],
+      };
+    });
+    // this.records = [
+    //   {
+    //     name: 'records',
+    //     series: data,
+    //   },
+    // ];
     //こんな感じでrecordsには以下のようなデータが入っている
     // [
     //   {
@@ -55,18 +58,17 @@ export class DetailCardPage implements OnInit {
   }
 
   ngOnInit() {}
-
-  view: [number, number] = [350, 350];
+  view: [number, number] = [350, 300];
   colorScheme: any = {
-    domain: ['#858FFF'],
+    domain: ['#FFC700', '#6D90F8', '#6AC4E4', '#D9A8EF', '#334055'],
   };
 
-  showXAxis = true;
-  showYAxis = true;
-  showXAxisLabel = false;
-  showYAxisLabel = false;
-  gradient = true;
-  timeline = false;
-  showLegend = false;
-  curve = d3.curveNatural;
+  // options
+  gradient: boolean = false;
+  showLegend: boolean = false;
+  showLabels: boolean = true;
+  isDoughnut: boolean = false;
+  percentageFormatting = (value: number): string => {
+    return `${value.toFixed(0)}%`; // 整数のパーセンテージ
+  }
 }
