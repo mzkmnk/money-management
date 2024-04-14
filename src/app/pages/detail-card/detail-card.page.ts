@@ -36,12 +36,6 @@ export class DetailCardPage implements OnInit {
         value: data[key],
       };
     });
-    // this.records = [
-    //   {
-    //     name: 'records',
-    //     series: data,
-    //   },
-    // ];
     //こんな感じでrecordsには以下のようなデータが入っている
     // [
     //   {

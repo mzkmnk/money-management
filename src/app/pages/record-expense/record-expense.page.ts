@@ -16,9 +16,10 @@ import { ErrorService } from 'src/app/services/error/error.service';
 export class RecordExpensePage implements OnInit {
   wallets: any[] = [];
   selectedWallet: any = {};
+  basedMoney: number = 0;
   purpose: string = '選択してください';
   isSelectedPurpose: boolean = false;
-  memo : string = '';
+  memo: string = '';
   options: any = {
     timeZone: 'Asia/Tokyo',
     year: 'numeric',
@@ -30,8 +31,8 @@ export class RecordExpensePage implements OnInit {
     hourCycle: 'h24',
   };
   formatter = new Intl.DateTimeFormat('ja-JP', this.options);
-  dateNotT: string = this.formatter.format(new Date()).replace(/\//g,'-');
-  date:string = this.dateNotT.slice(0,10)+'T'+this.dateNotT.slice(11,19);
+  dateNotT: string = this.formatter.format(new Date()).replace(/\//g, '-');
+  date: string = this.dateNotT.slice(0, 10) + 'T' + this.dateNotT.slice(11, 19);
   money: string = '0';
   constructor(
     private router: Router,
@@ -44,6 +45,7 @@ export class RecordExpensePage implements OnInit {
     this.wallets = this.dataService.getWallets();
     if (this.wallets.length > 0) {
       this.selectedWallet = this.wallets[0];
+      this.basedMoney = this.selectedWallet.money;
     }
   }
 
@@ -59,6 +61,8 @@ export class RecordExpensePage implements OnInit {
 
   selectedTapWallet(wallet: any) {
     this.selectedWallet = wallet;
+    this.basedMoney = wallet.money;
+    this.basedMoney -= Number(this.money);
     this.modalController.dismiss();
   }
 
@@ -73,27 +77,21 @@ export class RecordExpensePage implements OnInit {
       if (this.money === '0') {
         return;
       } else if (this.money.length === 1) {
-        this.selectedWallet.money =
-          this.selectedWallet.money + Number(this.money);
+        this.basedMoney += Number(this.money);
         this.money = '0';
       } else {
-        this.selectedWallet.money =
-          this.selectedWallet.money + Number(this.money);
+        this.basedMoney += Number(this.money);
         this.money = this.money.slice(0, -1);
-        this.selectedWallet.money =
-          this.selectedWallet.money - Number(this.money);
+        this.basedMoney -= Number(this.money);
       }
     } else {
       if (this.money === '0') {
         this.money = number;
-        this.selectedWallet.money =
-          this.selectedWallet.money - Number(this.money);
+        this.basedMoney -= Number(this.money);
       } else {
-        this.selectedWallet.money =
-          this.selectedWallet.money + Number(this.money);
+        this.basedMoney += Number(this.money);
         this.money += number;
-        this.selectedWallet.money =
-          this.selectedWallet.money - Number(this.money);
+        this.basedMoney -= Number(this.money);
       }
     }
   }
@@ -118,6 +116,7 @@ export class RecordExpensePage implements OnInit {
     });
     await loading.present();
     try {
+      this.selectedWallet.money = this.basedMoney;
       await this.dataService.recordExpense(
         this.selectedWallet,
         this.money,
@@ -129,6 +128,9 @@ export class RecordExpensePage implements OnInit {
       this.router.navigate(['/home']).then(() => {
         this.money = '0';
         this.purpose = '';
+        this.memo = '';
+        this.purpose = '選択してください';
+        this.selectedWallet = this.wallets[0];
         loading.dismiss();
       });
     } catch (error) {
